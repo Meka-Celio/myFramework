@@ -1,0 +1,18 @@
+{
+  "name": "celio/mon-framework",
+  "description": "Framework créé avec tuto de grafikart",
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "src/Framework"
+    }
+  },
+  "authors": [
+    {
+      "name": "Meka-Celio",
+      "email": "nnhaud.celestin@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  }
+}
