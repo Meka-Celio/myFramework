@@ -2,12 +2,23 @@
 
 namespace Framework;
 
+use GuzzleHttp\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class App
 {
 
-    public function run()
+    public function run(ServerRequestInterface $request): ResponseInterface
     {
-        echo 'Bonjour les gens !';
+        $uri = $request->getUri()->getPath();
+        if (!empty($uri) && $uri[-1] === "/") {
+            return (new Response())
+                ->withStatus(301)
+                ->withHeader('Location', substr($uri, 0, -1));
+        }
+        $response = new Response();
+        $response->getBody()->write('Bonjour');
+        return $response;
     }
 }
